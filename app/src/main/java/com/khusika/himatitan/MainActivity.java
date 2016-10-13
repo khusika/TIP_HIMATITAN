@@ -1,5 +1,6 @@
 package com.khusika.himatitan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,27 +10,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.khusika.himatitan.fragments.FragmentHome;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private final static String FRAGMENT_HOME_TAG = "fragment_home";
+    private final static int HOME = 0;
+
+    private final static String SELECTED_TAG = "selected_index";
+
+    private static int selectedIndex;
     private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        if(savedInstanceState!=null){
+            navigationView.getMenu().getItem(savedInstanceState.getInt(SELECTED_TAG)).setChecked(true);
+            return;
+        }
+
+        selectedIndex = HOME;
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,
+                new FragmentHome(),FRAGMENT_HOME_TAG).commit();
+
     }
 
     @Override
@@ -39,6 +56,12 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SELECTED_TAG, selectedIndex);
     }
 
     @Override
@@ -57,30 +80,68 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    public void setupNavigationDrawer(Toolbar toolbar){
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,
+                R.string.navigation_drawer_open,R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
+
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-        if (id == R.id.Home) {
-            // Handle the camera action
-        } else if (id == R.id.ProfilePengurus) {
-
-        } else if (id == R.id.Event) {
-
-        } else if (id == R.id.News) {
-
-        } else if (id == R.id.About) {
-
-        } else if (id == R.id.Contact) {
-
-        } else if (id == R.id.Team) {
-
+        switch(menuItem.getItemId()){
+            case R.id.Home:
+                if(!menuItem.isChecked()){
+                    selectedIndex = HOME;
+                    menuItem.setChecked(true);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new FragmentHome(), FRAGMENT_HOME_TAG).commit();
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.ProfilePengurus:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.Event:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.News:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.About:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.Contact:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.Team:
+                if(!menuItem.isChecked()){
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
     }
 }
