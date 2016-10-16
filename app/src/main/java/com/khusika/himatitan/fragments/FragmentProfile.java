@@ -46,7 +46,7 @@ public class FragmentProfile extends Fragment implements ViewPagerEx.OnPageChang
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
-        toolbar = (Toolbar)view.findViewById(R.id.about_toolbar);
+        toolbar = (Toolbar)view.findViewById(R.id.profile_toolbar);
         mDemoSlider = (SliderLayout)view.findViewById(R.id.slider);
 
         HashMap<String,Integer> file_maps = new HashMap<>();

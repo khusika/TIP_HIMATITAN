@@ -1,9 +1,7 @@
 package com.khusika.himatitan.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +18,6 @@ import com.khusika.himatitan.models.CardItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by khusika on 12/10/16.
@@ -50,7 +47,7 @@ public class FragmentHome extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        toolbar = (Toolbar)view.findViewById(R.id.home_toolbar);
 
         setupToolbar();
 
