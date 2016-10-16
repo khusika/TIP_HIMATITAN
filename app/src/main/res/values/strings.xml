@@ -5,6 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="home_fragment_title">Home</string>
     <string name="profile_fragment_title">Profile Pengurus</string>
+    <string name="event_fragment_title">Event</string>
+    <string name="news_fragment_title">News</string>
     <string name="text_about">This is a sample app of HIMATITAN.
     \nHIMATITAN : http://himatitan.ub.ac.id
     </string>
