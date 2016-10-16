@@ -13,12 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.khusika.himatitan.fragments.FragmentHome;
+import com.khusika.himatitan.fragments.FragmentProfile;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final static String FRAGMENT_HOME_TAG = "fragment_home";
+    private final static String FRAGMENT_PROFILE_TAG = "fragment_profile";
     private final static int HOME = 0;
+    private final static int PROFILE = 1;
 
     private final static String SELECTED_TAG = "selected_index";
 
@@ -113,6 +116,10 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.ProfilePengurus:
                 if(!menuItem.isChecked()){
+                    selectedIndex = PROFILE;
+                    menuItem.setChecked(true);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new FragmentProfile(), FRAGMENT_PROFILE_TAG).commit();
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
