@@ -4,34 +4,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/Home"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
-            android:id="@+id/ProfilePengurus"
-            android:icon="@drawable/ic_profile_black_24dp"
-            android:title="Profile Pengurus" />
+            android:id="@+id/Contact"
+            android:icon="@drawable/ic_contact"
+            android:title="Contact" />
         <item
-            android:id="@+id/Event"
-            android:icon="@drawable/ic_event_black_24dp"
-            android:title="Event" />
-        <item
-            android:id="@+id/News"
-            android:icon="@drawable/ic_news_black_24dp"
-            android:title="News" />
+            android:id="@+id/About"
+            android:icon="@drawable/ic_about"
+            android:title="About" />
     </group>
-
-    <item android:title="About">
-        <menu>
-            <item
-                android:id="@+id/About"
-                android:title="About" />
-            <item
-                android:id="@+id/Contact"
-                android:title="Contact" />
-            <item
-                android:id="@+id/Team"
-                android:title="Team" />
-        </menu>
-    </item>
 
 </menu>

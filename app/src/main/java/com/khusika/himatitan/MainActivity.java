@@ -11,22 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.khusika.himatitan.fragments.FragmentEvent;
 import com.khusika.himatitan.fragments.FragmentHome;
-import com.khusika.himatitan.fragments.FragmentNews;
-import com.khusika.himatitan.fragments.FragmentProfile;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final static String FRAGMENT_HOME_TAG = "fragment_home";
-    private final static String FRAGMENT_PROFILE_TAG = "fragment_profile";
-    private final static String FRAGMENT_EVENT_TAG = "fragment_event";
-    private final static String FRAGMENT_NEWS_TAG = "fragment_news";
     private final static int HOME = 0;
-    private final static int PROFILE = 1;
-    private final static int EVENT = 2;
-    private final static int NEWS = 4;
 
     private final static String SELECTED_TAG = "selected_index";
 
@@ -101,7 +92,7 @@ public class MainActivity extends AppCompatActivity
                 super.onDrawerClosed(drawerView);
             }
         };
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
 
@@ -119,44 +110,12 @@ public class MainActivity extends AppCompatActivity
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-            case R.id.ProfilePengurus:
-                if(!menuItem.isChecked()){
-                    selectedIndex = PROFILE;
-                    menuItem.setChecked(true);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new FragmentProfile(), FRAGMENT_PROFILE_TAG).commit();
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            case R.id.Event:
-                if(!menuItem.isChecked()){
-                    selectedIndex = EVENT;
-                    menuItem.setChecked(true);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new FragmentEvent(), FRAGMENT_EVENT_TAG).commit();
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            case R.id.News:
-                if(!menuItem.isChecked()){
-                    selectedIndex = NEWS;
-                    menuItem.setChecked(true);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new FragmentNews(), FRAGMENT_NEWS_TAG).commit();
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            case R.id.About:
-                if(!menuItem.isChecked()){
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
             case R.id.Contact:
                 if(!menuItem.isChecked()){
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
-            case R.id.Team:
+            case R.id.About:
                 if(!menuItem.isChecked()){
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
